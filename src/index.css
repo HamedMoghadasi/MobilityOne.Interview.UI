@@ -1,0 +1,23 @@
+.table-container {
+  max-width: 100%;
+  max-height: 50%;
+  margin: 30px;
+}
+
+#table_filter {
+  text-align: center !important;
+}
+#table_filter label {
+  width: 80%;
+}
+#table_filter input {
+  width: 100%;
+}
+
+.dataTables_scrollHead {
+  text-align: center;
+}
+
+.dataTables_scrollBody {
+  text-align: center;
+}

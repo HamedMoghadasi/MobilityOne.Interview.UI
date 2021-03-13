@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="table-container">
+      <table
+        id="table"
+        class="table table-striped table-bordered table-light display responsive nowrap"
+        style="width: 100%"
+      >
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Last Login</th>
+            <th>Created Date</th>
+            <th>Suspended</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <!-- add Modal -->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addModalLabel">Add User</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="addName">Name:</label>
+              <input type="text" class="form-control" id="addName" />
+            </div>
+            <div class="form-group">
+              <label for="addPhoneNumber">Phone number:</label>
+              <input type="text" class="form-control" id="addPhoneNumber" />
+            </div>
+            <div class="form-group">
+              <label for="addEmail">Email:</label>
+              <input type="email" class="form-control" id="addEmail" />
+            </div>
+            <div class="form-group">
+              <label for="addPassword">Password:</label>
+              <input type="text" class="form-control" id="addPassword" />
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="addSuspend" />
+              <label class="form-check-label" for="addSuspend"
+                >Is Suspended?</label
+              >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-success">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit Modal -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" class="form-control" id="editId" />
+            <input type="hidden" class="form-control" id="editLastLogin" />
+            <input type="hidden" class="form-control" id="editCreateDate" />
+            <div class="form-group">
+              <label for="editName">Name:</label>
+              <input type="text" class="form-control" id="editName" />
+            </div>
+            <div class="form-group">
+              <label for="editPhoneNumber">Phone number:</label>
+              <input type="text" class="form-control" id="editPhoneNumber" />
+            </div>
+            <div class="form-group">
+              <label for="editEmail">Email:</label>
+              <input type="email" class="form-control" id="editEmail" />
+            </div>
+            <div class="form-group">
+              <label for="editPassword">Password:</label>
+              <input type="text" class="form-control" id="editPassword" />
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="editSuspend"
+              />
+              <label class="form-check-label" for="editSuspend"
+                >Is Suspended?</label
+              >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-warning" id="update-button">
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
