@@ -1,0 +1,58 @@
+var datatableConfig = {
+  columns: [
+    { data: "id" },
+    { data: "name" },
+    { data: "phoneNumber" },
+    { data: "emailAddress" },
+    { data: "password" },
+    { data: "lastLogin" },
+    { data: "createDate" },
+    { data: "suspended" },
+    {
+      data: null,
+      render: function (data, type, full, meta) {
+        return `<button  class="btn btn-sm btn-warning edit-button" data-id="${data.id}" data-row=${meta.row} onclick="editUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#editModal">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            
+            <button class="btn btn-sm btn-danger delete-button" data-id="${data.id}" data-row=${meta.row} onclick="delteUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#deleteModal">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>`;
+      },
+      orderable: false,
+    },
+  ],
+  getAllUsers: function () {
+    let temp = [];
+    $.ajax({
+      url: `${config.apiUrl}/api/users`,
+      type: "GET",
+      async: false,
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (response) {
+        temp = response;
+      },
+    });
+    return temp;
+  },
+  options: function () {
+    return {
+      data: this.getAllUsers(),
+      aoColumns: this.columns,
+      responsive: true,
+      scrollY: "50vh",
+      scrollCollapse: true,
+      oLanguage: {
+        sSearch: "",
+        sSearchPlaceholder: "Search",
+      },
+      lengthMenu: [5, 15, 25, 50, 75, 100],
+      dom:
+        "<'row'<'col-sm-12 col-md-2 add-button-container'><'col-sm-12 col-md-8'f><'col-sm-12 col-md-2'l>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+      order: [[0, "desc"]],
+    };
+  },
+};
