@@ -12,7 +12,7 @@ var addUserModule = {
   render: function () {
     $(".add-button-container").append(
       `<button id='add-button' class='add-button btn btn-sm btn-success' type="button" data-toggle="modal" data-target="#addModal">
-                    <i class='fa fa-plus' aria-hidden='true'></i> Add
+                    <i class='fa fa-plus fa-xs' aria-hidden='true'></i> Add new user
                   </button>`
     );
   },

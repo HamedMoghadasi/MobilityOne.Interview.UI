@@ -31,11 +31,11 @@ var datatableConfig = {
       data: null,
       render: function (data, type, full, meta) {
         return `<button  class="btn btn-sm btn-warning edit-button" data-id="${data.id}" data-row=${meta.row} onclick="editUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#editModal">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
             </button>
             
             <button class="btn btn-sm btn-danger delete-button" data-id="${data.id}" data-row=${meta.row} onclick="delteUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#deleteModal">
-            <i class="fa fa-trash" aria-hidden="true"></i>
+            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
             </button>`;
       },
       orderable: false,
