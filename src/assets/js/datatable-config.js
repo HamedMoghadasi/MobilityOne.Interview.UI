@@ -21,9 +21,9 @@ var datatableConfig = {
       data: "suspended",
       render: function (data) {
         if (data === true) {
-          return `<i class="fa fa-check text-success h1" aria-hidden="true"></i>`;
+          return `<i class="fa fa-check text-success fa-lg" aria-hidden="true"></i>`;
         } else {
-          return `<i class="fa fa-close text-danger h1" aria-hidden="true"></i>`;
+          return `<i class="fa fa-close text-danger fa-lg" aria-hidden="true"></i>`;
         }
       },
     },

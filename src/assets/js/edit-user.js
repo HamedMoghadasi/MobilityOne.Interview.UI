@@ -13,7 +13,6 @@ var editUserModule = {
     let rowNumber = $("#editRowNumber").val();
     return { data: editedUser, rowNumber: rowNumber };
   },
-
   fillInputs: function (id, rowNumber) {
     var row = table.data().filter((user) => user.id === id)[0];
     $("#editId").val(row.id);
@@ -26,7 +25,6 @@ var editUserModule = {
     $("#editCreateDate").val(row.createDate);
     $("#editSuspend").prop("checked", row.suspended);
   },
-
   handleSubmit: function () {
     let editModule = this;
     $("#update-button").on("click", function () {
@@ -47,7 +45,6 @@ var editUserModule = {
       });
     });
   },
-
   init: function () {
     this.handleSubmit();
   },
