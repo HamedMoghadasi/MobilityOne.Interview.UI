@@ -55,7 +55,13 @@ var datatableConfig = {
     });
     return temp;
   },
+  handleResponsive: function () {
+    if ($(window).width() > 700) {
+      $("#table").addClass("display");
+    }
+  },
   options: function () {
+    this.handleResponsive();
     return {
       data: this.getAllUsers(),
       aoColumns: this.columns,

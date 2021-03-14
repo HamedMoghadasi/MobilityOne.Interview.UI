@@ -25,3 +25,25 @@
 .dataTables_length {
   float: right;
 }
+
+.dataTables_scroll {
+  overflow-x: auto;
+}
+
+.dataTables_scrollHead {
+  overflow: visible !important;
+}
+
+.dataTables_scrollBody {
+  overflow: visible !important;
+}
+
+@media only screen and (max-width: 600px) {
+  #table_filter label {
+    width: 100%;
+  }
+  #add-button {
+    width: 100%;
+    margin: 6px;
+  }
+}
