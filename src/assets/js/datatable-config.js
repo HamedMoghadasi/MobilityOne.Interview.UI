@@ -5,9 +5,28 @@ var datatableConfig = {
     { data: "phoneNumber" },
     { data: "emailAddress" },
     { data: "password" },
-    { data: "lastLogin" },
-    { data: "createDate" },
-    { data: "suspended" },
+    {
+      data: "lastLogin",
+      render: function (data) {
+        return moment(data).format("YYYY-MM-DD HH:mm");
+      },
+    },
+    {
+      data: "createDate",
+      render: function (data) {
+        return moment(data).format("YYYY-MM-DD HH:mm");
+      },
+    },
+    {
+      data: "suspended",
+      render: function (data) {
+        if (data === true) {
+          return `<i class="fa fa-check text-success h1" aria-hidden="true"></i>`;
+        } else {
+          return `<i class="fa fa-close text-danger h1" aria-hidden="true"></i>`;
+        }
+      },
+    },
     {
       data: null,
       render: function (data, type, full, meta) {
@@ -46,6 +65,7 @@ var datatableConfig = {
       oLanguage: {
         sSearch: "",
         sSearchPlaceholder: "Search",
+        sLengthMenu: "_MENU_ ",
       },
       lengthMenu: [5, 15, 25, 50, 75, 100],
       dom:

@@ -20,7 +20,6 @@ var addUserModule = {
     let addModule = this;
     $("#save-button").on("click", function () {
       var addedUser = addModule.getObject();
-      console.log("addedUser", addedUser);
       $.ajax({
         url: `${config.apiUrl}/api/users`,
         type: "POST",
@@ -28,12 +27,19 @@ var addUserModule = {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(addedUser.data),
         success: function (response) {
-          console.log("response", response);
           $("#addModal").modal("toggle");
           table.row.add(response).draw(false, null);
+          addModule.clearInputs();
         },
       });
     });
+  },
+  clearInputs: function () {
+    $("#addName").val(""),
+      $("#addPhoneNumber").val(""),
+      $("#addEmail").val(""),
+      $("#addPassword").val(""),
+      $("#addSuspend").prop("checked", false);
   },
   init: function () {
     this.render();

@@ -31,7 +31,6 @@ var editUserModule = {
     let editModule = this;
     $("#update-button").on("click", function () {
       var editedUser = editModule.getObject();
-      console.log("editedUser", editedUser);
       $.ajax({
         url: `${config.apiUrl}/api/users`,
         type: "PUT",
