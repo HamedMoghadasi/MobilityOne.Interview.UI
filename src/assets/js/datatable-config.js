@@ -50,7 +50,7 @@ var datatableConfig = {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response) {
-        temp = response;
+        temp = response.data;
       },
     });
     return temp;

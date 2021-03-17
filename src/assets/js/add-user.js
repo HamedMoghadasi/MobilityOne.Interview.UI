@@ -28,7 +28,7 @@ var addUserModule = {
         data: JSON.stringify(addedUser.data),
         success: function (response) {
           $("#addModal").modal("toggle");
-          table.row.add(response).draw(false, null);
+          table.row.add(response.data).draw(false, null);
           addModule.clearInputs();
         },
       });

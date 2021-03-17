@@ -1,3 +1,4 @@
 var config = {
-  apiUrl: "https://localhost:5001",
+  apiUrl: "https://developair.ir", //dotnet api
+  //apiUrl: "https://mobilityone-interview-api-node.herokuapp.com", // node api
 };
