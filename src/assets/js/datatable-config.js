@@ -20,7 +20,7 @@ var datatableConfig = {
     {
       data: "suspended",
       render: function (data) {
-        if (data === true) {
+        if (data === true || data === 1) {
           return `<i class="fa fa-check text-success fa-lg" aria-hidden="true"></i>`;
         } else {
           return `<i class="fa fa-close text-danger fa-lg" aria-hidden="true"></i>`;
@@ -66,8 +66,8 @@ var datatableConfig = {
       data: this.getAllUsers(),
       aoColumns: this.columns,
       responsive: true,
-      scrollY: "50vh",
-      scrollCollapse: true,
+      // scrollY: "80vh",
+      // scrollCollapse: true,
       oLanguage: {
         sSearch: "",
         sSearchPlaceholder: "Search",
